@@ -2,6 +2,11 @@
 
 ## Descripción del Proyecto
 
+## Link de Alkipc Git-Pages
+
+https://andresgutierrez1992.github.io/Alquipc/
+
+
 Sistema de facturación web para la empresa ALQUIPC, especializada en el alquiler de equipos de cómputo portátiles. El sistema permite calcular automáticamente las tarifas basadas en diferentes modalidades de alquiler y generar facturas electrónicas.
 
 ##  Características Principales
