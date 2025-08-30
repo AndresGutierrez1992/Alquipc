@@ -2,7 +2,7 @@
 
 ## Descripción del Proyecto
 
-## Link de Alkipc Git-Pages
+## Link de Alqipc Git-Pages
 
 https://andresgutierrez1992.github.io/Alquipc/
 
