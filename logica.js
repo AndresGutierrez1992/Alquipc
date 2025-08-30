@@ -347,7 +347,7 @@ function enviarFacturaPorEmail() {
 
     try {
         // Generar contenido de la factura
-        // Crear enlace mailto con la factura
+        // Crear enlace google con la factura
         let asunto = `ALQUIPC - Factura ${datosFacturaActual.idCliente
             } - ${new Date().toLocaleDateString("es-CO")}`;
         let contenidoFactura = generarContenidoFactura(datosFacturaActual);
