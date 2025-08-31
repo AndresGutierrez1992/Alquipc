@@ -353,31 +353,52 @@ function enviarFacturaPorEmail() {
         let contenidoFactura = generarContenidoFactura(datosFacturaActual);
 
         // Crear enlace directo a Gmail
+        let mailtoLink =
+            "mailto:" + encodeURIComponent(datosFacturaActual.emailCliente) +
+            "?subject=" + encodeURIComponent(asunto) +
+            "&body=" + encodeURIComponent(contenidoFactura);
+
         let gmailLink =
             "https://mail.google.com/mail/?view=cm&fs=1" +
-            "&to=" +
-            encodeURIComponent(datosFacturaActual.emailCliente) +
-            "&su=" +
-            encodeURIComponent(asunto) +
-            "&body=" +
-            encodeURIComponent(contenidoFactura);
+            "&to=" + encodeURIComponent(datosFacturaActual.emailCliente) +
+            "&su=" + encodeURIComponent(asunto) +
+            "&body=" + encodeURIComponent(contenidoFactura);
+
+        // Detectar dispositivo
+        if (/Android|iPhone|iPad/i.test(navigator.userAgent)) {
+            // En móviles → abre la app de correo
+            setTimeout(function () {
+                // Abrir cliente de correo
+                window.location.href = mailtoLink;
+                // Mostrar mensaje de éxito con instrucciones claras
+                mostrarExito(
+                    "Factura lista para envío. Se abrió Gmail - asegúrate de estar logueado con andresbmx11@gmail.com"
+                );
+
+                // Restaurar botón
+                botonEnviar.disabled = false;
+                botonEnviar.classList.remove("loading");
+                botonEnviar.textContent = "Enviar Factura por Email";
+            }, 1000);
+        } else {
+            // En PC → abre Gmail web
+            setTimeout(function () {
+                // Abrir cliente de correo
+                window.open(gmailLink, "_blank");
+                // Mostrar mensaje de éxito con instrucciones claras
+                mostrarExito(
+                    "Factura lista para envío. Se abrió Gmail - asegúrate de estar logueado con andresbmx11@gmail.com"
+                );
+
+                // Restaurar botón
+                botonEnviar.disabled = false;
+                botonEnviar.classList.remove("loading");
+                botonEnviar.textContent = "Enviar Factura por Email";
+            }, 1000);
+
+        }
 
 
-        // Simular proceso de envío (2 segundos)
-        setTimeout(function () {
-            // Abrir cliente de correo
-            window.open(gmailLink, "_blank");
-
-            // Mostrar mensaje de éxito con instrucciones claras
-            mostrarExito(
-                "Factura lista para envío. Se abrió Gmail - asegúrate de estar logueado con andresbmx11@gmail.com"
-            );
-
-            // Restaurar botón
-            botonEnviar.disabled = false;
-            botonEnviar.classList.remove("loading");
-            botonEnviar.textContent = "Enviar Factura por Email";
-        }, 2000);
     } catch (error) {
         // Manejar errores
         mostrarError("Error al preparar el envío. Intente nuevamente.");
