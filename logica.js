@@ -118,8 +118,7 @@ function calcularFactura() {
         subtotalAdicional = subtotalAdicional - descuentoAdicional;
 
     }else{
-        alert("maximo 15 dias adicioneales")
-        diasAdicionales==0;
+        throw new Error("Días adicionales inválidos. Finalizando ejecución.");
     }
 
     let subtotal = subtotalInicial + subtotalAdicional;
@@ -203,7 +202,7 @@ function mostrarResultado(datos) {
                 </div>
             `;
 
-    if (datos.diasAdicionales > 0 && datos.diasAdicionales<=15) {
+    if (datos.diasAdicionales > 0 && datos.diasAdicionales <= 15) {
         detalleHTML += `
                     <div class="detalle-item">
                         <span>Días Adicionales:</span>
