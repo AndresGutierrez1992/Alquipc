@@ -118,7 +118,8 @@ function calcularFactura() {
         subtotalAdicional = subtotalAdicional - descuentoAdicional;
 
     }else{
-        throw new Error("Días adicionales inválidos. Finalizando ejecución.");
+        
+        return alert("maximo 15 dias adicionales")
     }
 
     let subtotal = subtotalInicial + subtotalAdicional;
