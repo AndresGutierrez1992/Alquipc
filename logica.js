@@ -112,10 +112,12 @@ function calcularFactura() {
     let descuentoAdicional = 0;
 
     // Calcular días adicionales con descuento del 2% por día
-    if (diasAdicionales > 0) {
+    if (diasAdicionales > 0 && diasAdicionales<=15) {
         subtotalAdicional = numEquipos * diasAdicionales * VALOR_POR_DIA;
         descuentoAdicional = subtotalAdicional * 0.02 * diasAdicionales;
         subtotalAdicional = subtotalAdicional - descuentoAdicional;
+    }else{
+        alert("maximo 15 dias adicioneales")
     }
 
     let subtotal = subtotalInicial + subtotalAdicional;
