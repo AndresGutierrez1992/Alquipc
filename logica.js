@@ -116,8 +116,10 @@ function calcularFactura() {
         subtotalAdicional = numEquipos * diasAdicionales * VALOR_POR_DIA;
         descuentoAdicional = subtotalAdicional * 0.02 * diasAdicionales;
         subtotalAdicional = subtotalAdicional - descuentoAdicional;
+
     }else{
         alert("maximo 15 dias adicioneales")
+        diasAdicionales==0;
     }
 
     let subtotal = subtotalInicial + subtotalAdicional;
@@ -201,7 +203,7 @@ function mostrarResultado(datos) {
                 </div>
             `;
 
-    if (datos.diasAdicionales > 0) {
+    if (datos.diasAdicionales > 0 && datos.diasAdicionales<=15) {
         detalleHTML += `
                     <div class="detalle-item">
                         <span>Días Adicionales:</span>
